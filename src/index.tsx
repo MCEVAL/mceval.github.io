@@ -4,9 +4,12 @@ import Leaderboard from "./LeaderboardComp"
 
 import "./index.css"
 
-import mockDataRep from "./mocks/code_complete.json"
-import mockDataGen from "./mocks/code_infilling.json"
-import mockDataTest from "./mocks/code_expalin.json"
+import mockDataInfillingLightSpan from "./mocks/code_infilling_light_span.json"
+import mockDataInfillingMultiLine from "./mocks/code_infilling_multi_line.json"
+import mockDataInfillingSingleLine from "./mocks/code_infilling_single_line.json"
+import mockDataInfillingSpan from "./mocks/code_infilling_span.json"
+import mockDataComplete from "./mocks/code_complete.json"
+import mockDataExpalin from "./mocks/code_expalin.json"
 
 
 const LeaderboardTabs = () => {
@@ -31,11 +34,17 @@ const LeaderboardTabs = () => {
     // console.log(activeTab);
     switch (activeTab) {
       case 'tab1':
-        return <Leaderboard theme={{ base: "light" }} args={[mockDataGen, "infilling"]} />;
+        return <Leaderboard theme={{ base: "light" }} args={[mockDataInfillingLightSpan, "infilling"]} />;
       case 'tab2':
-        return <Leaderboard theme={{ base: "light" }} args={[mockDataRep, "complete"]} />;
+        return <Leaderboard theme={{ base: "light" }} args={[mockDataInfillingMultiLine, "infilling"]} />;
       case 'tab3':
-        return <Leaderboard theme={{ base: "light" }} args={[mockDataTest, "expalin"]} />;
+        return <Leaderboard theme={{ base: "light" }} args={[mockDataInfillingSingleLine, "complete"]} />;
+      case 'tab4':
+        return <Leaderboard theme={{ base: "light" }} args={[mockDataInfillingSpan, "expalin"]} />;
+      case 'tab5':
+        return <Leaderboard theme={{ base: "light" }} args={[mockDataComplete, "complete"]} />;
+      case 'tab6':
+        return <Leaderboard theme={{ base: "light" }} args={[mockDataExpalin, "expalin"]} />;
       default:
         return <div>Select a tab</div>;
     }
@@ -43,9 +52,12 @@ const LeaderboardTabs = () => {
   return (
     <div className="tabs-container">
       <ul className={`tabs ${isMobile ? 'mobile' : ''}`}>
-        <li className={activeTab === 'tab1' ? 'is-active' : ''} onClick={() => setActiveTab('tab1')}><a>Code Generation</a></li>
-        <li className={activeTab === 'tab2' ? 'is-active' : ''} onClick={() => setActiveTab('tab2')}><a>Self Repair</a></li>
-        <li className={activeTab === 'tab3' ? 'is-active' : ''} onClick={() => setActiveTab('tab3')}><a>Test Output Prediction</a></li>
+        <li className={activeTab === 'tab1' ? 'is-active' : ''} onClick={() => setActiveTab('tab1')}><a>Infilling Light Span</a></li>
+        <li className={activeTab === 'tab2' ? 'is-active' : ''} onClick={() => setActiveTab('tab2')}><a>Infilling Multi Line</a></li>
+        <li className={activeTab === 'tab3' ? 'is-active' : ''} onClick={() => setActiveTab('tab3')}><a>Infilling Single Line</a></li>
+        <li className={activeTab === 'tab4' ? 'is-active' : ''} onClick={() => setActiveTab('tab4')}><a>Infilling Span</a></li>
+        <li className={activeTab === 'tab5' ? 'is-active' : ''} onClick={() => setActiveTab('tab5')}><a>Complete</a></li>
+        <li className={activeTab === 'tab6' ? 'is-active' : ''} onClick={() => setActiveTab('tab6')}><a>Expalin</a></li>
       </ul>
       <div className="tab-content">
         {renderLeaderboard()}

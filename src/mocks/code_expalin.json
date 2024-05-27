@@ -3,8 +3,6 @@
         {
             "model": "gpt4",
             "AVG": 0.626,
-            "CORRECT": "1256",
-            "ALL": "2007",
             
             "AWK": 0.84,
             "C": 0.7,
@@ -51,8 +49,6 @@
         {
             "model": "code-llama-7b",
             "AVG": 0.23800000000000002,
-            "CORRECT": "477",
-            "ALL": "2007",
             
             "AWK": 0.34,
             "C": 0.34,
@@ -99,8 +95,6 @@
         {
             "model": "code-llama-13b",
             "AVG": 0.293,
-            "CORRECT": "588",
-            "ALL": "2007",
             
             "AWK": 0.32,
             "C": 0.42,
@@ -147,8 +141,6 @@
         {
             "model": "deepseek-coder-7b-instruct",
             "AVG": 0.5579999999999999,
-            "CORRECT": "1119",
-            "ALL": "2007",
             
             "AWK": 0.7,
             "C": 0.62,
@@ -195,8 +187,6 @@
         {
             "model": "Magicoder-S-DS-6.7B",
             "AVG": 0.514,
-            "CORRECT": "1032",
-            "ALL": "2007",
             
             "AWK": 0.58,
             "C": 0.62,
@@ -243,8 +233,6 @@
         {
             "model": "octocoder",
             "AVG": 0.294,
-            "CORRECT": "590",
-            "ALL": "2007",
             
             "AWK": 0.32,
             "C": 0.32,
@@ -291,8 +279,6 @@
         {
             "model": "WizardCoder-15B-V1.0",
             "AVG": null,
-            "CORRECT": null,
-            "ALL": null,
             
             "AWK": null,
             "C": null,
@@ -339,8 +325,6 @@
         {
             "model": "gpt3",
             "AVG": 0.479,
-            "CORRECT": "962",
-            "ALL": "2007",
             
             "AWK": 0.08,
             "C": 0.68,
@@ -388,42 +372,42 @@
     "models": [
         {
             "model_name": "gpt4",
-            "release_date": 1709247600000,
+            "release_date": 1672527600000,
             "link": "www.baidu.com"
         },
         {
             "model_name": "code-llama-7b",
-            "release_date": 1709247600000,
+            "release_date": 1672527600000,
             "link": "www.baidu.com"
         },
         {
             "model_name": "code-llama-13b",
-            "release_date": 1709247600000,
+            "release_date": 1672527600000,
             "link": "www.baidu.com"
         },
         {
             "model_name": "deepseek-coder-7b-instruct",
-            "release_date": 1709247600000,
+            "release_date": 1672527600000,
             "link": "www.baidu.com"
         },
         {
             "model_name": "Magicoder-S-DS-6.7B",
-            "release_date": 1709247600000,
+            "release_date": 1672527600000,
             "link": "www.baidu.com"
         },
         {
             "model_name": "octocoder",
-            "release_date": 1709247600000,
+            "release_date": 1672527600000,
             "link": "www.baidu.com"
         },
         {
             "model_name": "WizardCoder-15B-V1.0",
-            "release_date": 1709247600000,
+            "release_date": 1672527600000,
             "link": "www.baidu.com"
         },
         {
             "model_name": "gpt3",
-            "release_date": 1709247600000,
+            "release_date": 1672527600000,
             "link": "www.baidu.com"
         }
     ],

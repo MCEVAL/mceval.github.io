@@ -3,8 +3,6 @@
         {
             "model": "gpt4",
             "AVG": 0.634,
-            "CORRECT": "1272",
-            "ALL": "2007",
             "AWK": 0.7,
             "C": 0.6,
             "C++": 0.64,
@@ -50,8 +48,6 @@
         {
             "model": "deepseek-coder-7b-instruct",
             "AVG": 0.46,
-            "CORRECT": "924",
-            "ALL": "2007",
             "AWK": 0.4,
             "C": 0.54,
             "C++": 0.56,
@@ -97,8 +93,6 @@
         {
             "model": "code-llama-7b",
             "AVG": 0.24600000000000002,
-            "CORRECT": "493",
-            "ALL": "2007",
             "AWK": 0.32,
             "C": 0.34,
             "C++": 0.26,
@@ -144,8 +138,6 @@
         {
             "model": "code-llama-13b",
             "AVG": 0.27699999999999997,
-            "CORRECT": "555",
-            "ALL": "2007",
             "AWK": 0.36,
             "C": 0.38,
             "C++": 0.38,
@@ -191,8 +183,6 @@
         {
             "model": "Magicoder-S-DS-6.7B",
             "AVG": 0.486,
-            "CORRECT": "976",
-            "ALL": "2007",
             "AWK": 0.44,
             "C": 0.5,
             "C++": 0.5,
@@ -238,8 +228,6 @@
         {
             "model": "WizardCoder-15B-V1.0",
             "AVG": 0.28,
-            "CORRECT": "562",
-            "ALL": "2007",
             "AWK": 0.18,
             "C": 0.38,
             "C++": 0.28,
@@ -285,8 +273,6 @@
         {
             "model": "octocoder",
             "AVG": 0.233,
-            "CORRECT": "468",
-            "ALL": "2007",
             "AWK": 0.28,
             "C": 0.28,
             "C++": 0.28,
@@ -332,8 +318,6 @@
         {
             "model": "GPT3.5",
             "AVG": 0.526,
-            "CORRECT": "1055",
-            "ALL": "2007",
             "AWK": 0.14,
             "C": 0.54,
             "C++": 0.58,
@@ -379,8 +363,6 @@
         {
             "model": "codeqwen-7b-chat",
             "AVG": 0.45399999999999996,
-            "CORRECT": "911",
-            "ALL": "2007",
             "AWK": 0.4,
             "C": 0.52,
             "C++": 0.56,
@@ -426,8 +408,6 @@
         {
             "model": "codeqwen-7b-chat-complete-v3.jsonl",
             "AVG": 0.35200000000000004,
-            "CORRECT": "707",
-            "ALL": "2007",
             "AWK": 0.4,
             "C": 0.48,
             "C++": 0.5,
@@ -474,32 +454,32 @@
     "models": [
         {
             "model_name": "gpt4",
-            "release_date": 1693346400000,
+            "release_date": 1672527600000,
             "link": "www.baidu.com"
         },
         {
             "model_name": "deepseek-coder-7b-instruct",
-            "release_date": 1693346400000,
+            "release_date": 1672527600000,
             "link": "www.baidu.com"
         },
         {
             "model_name": "code-llama-7b",
-            "release_date": 1693346400000,
+            "release_date": 1672527600000,
             "link": "www.baidu.com"
         },
         {
             "model_name": "code-llama-13b",
-            "release_date": 1693346400000,
+            "release_date": 1672527600000,
             "link": "www.baidu.com"
         },
         {
             "model_name": "Magicoder-S-DS-6.7B",
-            "release_date": 1672441200000,
+            "release_date": 1672527600000,
             "link": "www.baidu.com"
         },
         {
             "model_name": "WizardCoder-15B-V1.0",
-            "release_date": 1693346400000,
+            "release_date": 1672527600000,
             "link": "www.baidu.com"
         },
         {
@@ -509,12 +489,12 @@
         },
         {
             "model_name": "GPT3.5",
-            "release_date": 1693346400000,
+            "release_date": 1672527600000,
             "link": "www.baidu.com"
         },
         {
             "model_name": "codeqwen-7b-chat",
-            "release_date": 1682805600000,
+            "release_date": 1672527600000,
             "link": "www.baidu.com"
         },
         {
