@@ -159,6 +159,9 @@ function getColumnDefs(columnNames: Array<string>, modelsDict: any, page_idx : s
           }else if (column_name.length <3){
             mwidth = 70
           }
+          if (column_name == "Scheme" || column_name == "VimL" || column_name == "Ruby"){
+            mwidth = 105
+          }
           // console.log("column_name", column_name, column_name.length, mwidth)
           return {
             field: column_name,
