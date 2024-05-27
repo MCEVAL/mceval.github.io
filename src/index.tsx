@@ -4,15 +4,14 @@ import Leaderboard from "./LeaderboardComp"
 
 import "./index.css"
 
-import mockDataGen from "./mocks/performances_generation.json"
-import mockDataRep from "./mocks/performances_repair.json"
-import mockDataTest from "./mocks/performances_testgen.json"
-import mockDataExec from "./mocks/performances_execution.json"
+import mockDataRep from "./mocks/code_complete.json"
+import mockDataGen from "./mocks/code_infilling.json"
+import mockDataTest from "./mocks/code_expalin.json"
 
 
 const LeaderboardTabs = () => {
   // State to track the currently selected tab
-  const [activeTab, setActiveTab] = useState('tab1');
+  const [activeTab, setActiveTab] = useState('tab2');
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
@@ -32,13 +31,11 @@ const LeaderboardTabs = () => {
     // console.log(activeTab);
     switch (activeTab) {
       case 'tab1':
-        return <Leaderboard theme={{ base: "light" }} args={mockDataGen} />;
+        return <Leaderboard theme={{ base: "light" }} args={[mockDataGen, "infilling"]} />;
       case 'tab2':
-        return <Leaderboard theme={{ base: "light" }} args={mockDataRep} />;
+        return <Leaderboard theme={{ base: "light" }} args={[mockDataRep, "complete"]} />;
       case 'tab3':
-        return <Leaderboard theme={{ base: "light" }} args={mockDataTest} />;
-      case 'tab4':
-        return <Leaderboard theme={{ base: "light" }} args={mockDataExec} />;
+        return <Leaderboard theme={{ base: "light" }} args={[mockDataTest, "expalin"]} />;
       default:
         return <div>Select a tab</div>;
     }
@@ -49,7 +46,6 @@ const LeaderboardTabs = () => {
         <li className={activeTab === 'tab1' ? 'is-active' : ''} onClick={() => setActiveTab('tab1')}><a>Code Generation</a></li>
         <li className={activeTab === 'tab2' ? 'is-active' : ''} onClick={() => setActiveTab('tab2')}><a>Self Repair</a></li>
         <li className={activeTab === 'tab3' ? 'is-active' : ''} onClick={() => setActiveTab('tab3')}><a>Test Output Prediction</a></li>
-        <li className={activeTab === 'tab4' ? 'is-active' : ''} onClick={() => setActiveTab('tab4')}><a>Code Execution</a></li>
       </ul>
       <div className="tab-content">
         {renderLeaderboard()}
@@ -63,9 +59,9 @@ ReactDOM.render(
   <React.StrictMode>
     <section className="hero">
       <div className="hero-body">
-        <div className="container is-max-desktop">
-          <div className="columns is-centered">
-            <div className="column has-text-centered">
+        <div className="container is-fluid">
+          <div className="columns  is-fullwidth">
+            <div className="column has-text-centered is-fullwidth">
               <h1 className="title is-1 publication-title">
                 LiveCodeBench: Holistic and Contamination Free Evaluation of
                 Large Language Models for Code

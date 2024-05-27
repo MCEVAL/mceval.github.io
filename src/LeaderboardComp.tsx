@@ -23,12 +23,12 @@ import {
 
 import "./LeaderboardAgGrid.css"
 import styles from "./Leaderboard.module.css"
-const FONT_FAMILY = "'JetBrains Mono', monospace"
+const FONT_FAMILY = "'JetBrains Mono', monospace, 0.3em"
 
 const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
   // args from Streamlit
   let args = props.args;
-  const { performances, models, date_marks } = args;
+  const [{ performances, models, date_marks, tasks}, page_idx]= args;
 
 
   const [isMobileCompressed, setIsMobileCompressed] = useState(window.innerWidth < 768);
@@ -44,7 +44,7 @@ const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
 
   const modelsDict = useMemo(() => {
     return models.reduce((acc: any, model: any) => {
-      acc[model.model_repr] = model
+      acc[model.model_name] = model
       return acc
     }, {})
   }, [models])
@@ -106,14 +106,6 @@ const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
 
   const dateAriaText = dateLabelFormat
 
-  // ********* AgGrid *********
-
-  // const leaderboard = getLeaderboard(
-  //   performances,
-  //   models,
-  //   dateStartAndEnd[0],
-  //   dateStartAndEnd[1]
-  // )
 
   const leaderboard = useMemo(() => {
     return getLeaderboard(
@@ -124,26 +116,10 @@ const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
     );
   }, [performances, models, dateStartAndEnd]);
 
-  if (isMobileCompressed) {
-    // remove columns from leaderboard
-    // remove Easy-Pass@1, Medium-Pass@1, Hard-Pass@1
-
-    // will delete throw error if column not found
-
-    leaderboard.forEach((row: any) => {
-      delete row["Easy-Pass@1"];
-      delete row["Medium-Pass@1"];
-      delete row["Hard-Pass@1"];
-      delete row["Pass@1 (no COT)"];
-    });
-
-  }
-  // console.log(leaderboard)
 
 
   const numProblems = performances.filter(
     (result: any) =>
-      result["model"] === "GPT-3.5-Turbo-0301" &&
       result["date"] >= dateStartAndEnd[0] &&
       result["date"] <= dateStartAndEnd[1]
   ).length;
@@ -179,14 +155,13 @@ const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
   }, [leaderboard]);
 
   const [columnDefs, setColumnDefs] = useState(
-    getColumnDefs(columnNames, modelsDict)
+    getColumnDefs(columnNames, modelsDict, page_idx)
   )
 
   useEffect(() => {
     // console.log('Component re-rendered due to changes in column:', columnNames, modelsDict);
-    setColumnDefs(getColumnDefs(columnNames, modelsDict));
+    setColumnDefs(getColumnDefs(columnNames, modelsDict, page_idx));
   }, [columnNames, modelsDict]);
-
 
   // console.log(columnNames, modelsDict);
   // ********* Styles and return *********
@@ -222,6 +197,13 @@ const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
     type: 'fitCellContents'
   }
 
+  let groupDisplayType = 'groupRows';
+  if (page_idx !== "infilling"){
+    groupDisplayType = 'custom'
+  }
+  console.log("groupDisplayType  page_idx", groupDisplayType, page_idx)
+  console.log("columnDefs", columnDefs)
+  console.log("rowData", rowData)
 
   let message = `${numProblems} problems selected in the current time window.`;
 
@@ -291,6 +273,7 @@ const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
                 ref={gridRef}
                 rowData={rowData}
                 columnDefs={columnDefs}
+                groupDisplayType={groupDisplayType}
                 defaultColDef={defaultColDef}
                 rowClassRules={rowClassRules}
                 rowSelection={"multiple"}
