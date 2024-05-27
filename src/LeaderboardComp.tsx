@@ -180,7 +180,7 @@ const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
 
   const gridStyle = useMemo(
     () => ({
-      height: `${Math.min(42 * rowData.length, 1000)}px`, // Adjust 600 to your desired max height
+      height: `${Math.min(42 * rowData.length, 1500)}px`, // Adjust 600 to your desired max height
       // height: "100%",
       "--ag-font-family": FONT_FAMILY,
       // minWidth: "760px",
@@ -191,7 +191,7 @@ const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
     }),
     [rowData]
   )
-
+  console.log("rowData.length", rowData.length)
 
   const autoSizeStrategy = {
     type: 'fitCellContents'
@@ -258,18 +258,18 @@ const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
       </ThemeProvider>
       <div
         style={{
-          display: numProblems === 0 ? "none" : "flex"
-          ,
+          display: numProblems === 0 ? "none" : "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }} id='flexGridWrapper'>
-          <div style={{ flexGrow: "1", width: "100%", display: "flex", justifyContent: "center" }}> {/* Center the grid */}
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center",  height: "100%", width: "100%" }} id='flexGridWrapper'>
+          <div style={{ flexGrow: "1", height: "100%", width: "100%", display: "flex", justifyContent: "center" }}> {/* Center the grid */}
             <div style={gridStyle} className={agGridTheme}>
               {/* @ts-ignore */}
 
               <AgGridReact
+                
                 ref={gridRef}
                 rowData={rowData}
                 columnDefs={columnDefs}

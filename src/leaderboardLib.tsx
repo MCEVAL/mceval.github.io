@@ -124,62 +124,44 @@ function getColumnDefs(columnNames: Array<string>, modelsDict: any, page_idx : s
   // Format the columns into array of { field: "column_name" }
   return columnNames
     .map((column_name) => {
-      switch (column_name) {
-        case "Rank":
-          return {
-            field: column_name,
-            suppressMovable: true,
-            cellClass: 'suppress-movable-col',
-          }
-
-        case "Model":
+        if (column_name == "Model"){
           return {
             field: column_name,
             suppressMovable: true,
             cellClass: 'suppress-movable-col',
             flex: 2,
+            pinned : "left",
             tooltipField: "Estimated Cutoff For LiveCodeBench",
-            cellRenderer: (params: any) => {
-              return modelsDict[params.value].link ? (
-                <a
-                  href={modelsDict[params.value].link}
-                  target="_blank"
-                  className={styles.leaderboardModelLink}
-                >
-                  {params.value}
-                </a>
-              ) : (
-                params.value
-              )
-            },
           }
-
-        case "Estimated Cutoff For LiveCodeBench":
+        }
+        else if (column_name == "Rank"){
+          return {
+            field: column_name,
+            suppressMovable: true,
+            cellClass: 'suppress-movable-col',
+          }
+        }
+        else if (column_name == "Estimated Cutoff For LiveCodeBench"){
           return null
-
-        case "Contaminated":
+        }
+        else if (column_name == "Contaminated"){
           return null
+        }
+        else {
+          let mwidth = 75
+          if (column_name.length > 4){
+            mwidth = 95
+          }else if (column_name.length <3){
+            mwidth = 70
+          }
+          console.log("column_name", column_name, column_name.length, mwidth)
           return {
             field: column_name,
-            headerTooltip: `
-              Model is considered contaminated if it is released after the start date of
-              the selected problems set.
-            `,
+              minWidth: mwidth,
           }
-
-        case "Task":
-          return {
-            field: column_name,
-            rowGroup: page_idx==="infilling"?true:false, 
-            hide: page_idx==="infilling"?true:false, 
-          }
-
-        default:
-          return {
-            field: column_name,
-          }
+        }
       }
-    })
+    )
     .filter((columnDef) => columnDef !== null)
 }
 
