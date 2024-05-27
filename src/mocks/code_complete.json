@@ -42,8 +42,9 @@
             "Tcl": 0.56,
             "TS": 0.6,
             "VB": 0.68,
-            "VimL": 0.38,
-            "date": 1709247600000
+            "VimL": 0.38
+
+            
         },
         {
             "model": "deepseek-coder-7b-instruct",
@@ -87,8 +88,9 @@
             "Tcl": 0.4,
             "TS": 0.5,
             "VB": 0.58,
-            "VimL": 0.2,
-            "date": 1709247600000
+            "VimL": 0.2
+
+            
         },
         {
             "model": "code-llama-7b",
@@ -132,8 +134,9 @@
             "Tcl": 0.22,
             "TS": 0.28,
             "VB": 0.34,
-            "VimL": 0.14,
-            "date": 1709247600000
+            "VimL": 0.14
+
+            
         },
         {
             "model": "code-llama-13b",
@@ -177,8 +180,9 @@
             "Tcl": 0.18,
             "TS": 0.4,
             "VB": 0.38,
-            "VimL": 0.1,
-            "date": 1709247600000
+            "VimL": 0.1
+
+            
         },
         {
             "model": "Magicoder-S-DS-6.7B",
@@ -222,8 +226,9 @@
             "Tcl": 0.46,
             "TS": 0.5,
             "VB": 0.68,
-            "VimL": 0.16,
-            "date": 1709247600000
+            "VimL": 0.16
+
+            
         },
         {
             "model": "WizardCoder-15B-V1.0",
@@ -267,8 +272,9 @@
             "Tcl": 0.2,
             "TS": 0.42,
             "VB": 0.36,
-            "VimL": 0.18,
-            "date": 1709247600000
+            "VimL": 0.18
+
+            
         },
         {
             "model": "octocoder",
@@ -312,8 +318,8 @@
             "Tcl": 0.24,
             "TS": 0.38,
             "VB": 0.28,
-            "VimL": 0.14,
-            "date": 1709247600000
+            "VimL": 0.14
+
         },
         {
             "model": "GPT3.5",
@@ -357,8 +363,9 @@
             "Tcl": 0.44,
             "TS": 0.54,
             "VB": 0.74,
-            "VimL": 0.24,
-            "date": 1709247600000
+            "VimL": 0.24
+
+            
         },
         {
             "model": "codeqwen-7b-chat",
@@ -402,8 +409,9 @@
             "Tcl": 0.3,
             "TS": 0.54,
             "VB": 0.56,
-            "VimL": 0.18,
-            "date": 1709247600000
+            "VimL": 0.18
+
+            
         },
         {
             "model": "codeqwen-7b-chat-complete-v3.jsonl",
@@ -447,60 +455,61 @@
             "Tcl": 0.14,
             "TS": 0.44,
             "VB": 0.08,
-            "VimL": 0.48,
-            "date": 1709247600000
+            "VimL": 0.48
+
+            
         }
     ],
     "models": [
         {
-            "model_name": "gpt4",
-            "release_date": 1672527600000,
-            "link": "www.baidu.com"
+            "model_name": "gpt4"
+
+            
         },
         {
-            "model_name": "deepseek-coder-7b-instruct",
-            "release_date": 1672527600000,
-            "link": "www.baidu.com"
+            "model_name": "deepseek-coder-7b-instruct"
+
+        
         },
         {
-            "model_name": "code-llama-7b",
-            "release_date": 1672527600000,
-            "link": "www.baidu.com"
+            "model_name": "code-llama-7b"
+
+            
         },
         {
-            "model_name": "code-llama-13b",
-            "release_date": 1672527600000,
-            "link": "www.baidu.com"
+            "model_name": "code-llama-13b"
+
+            
         },
         {
-            "model_name": "Magicoder-S-DS-6.7B",
-            "release_date": 1672527600000,
-            "link": "www.baidu.com"
+            "model_name": "Magicoder-S-DS-6.7B"
+
+            
         },
         {
-            "model_name": "WizardCoder-15B-V1.0",
-            "release_date": 1672527600000,
-            "link": "www.baidu.com"
+            "model_name": "WizardCoder-15B-V1.0"
+
+            
         },
         {
-            "model_name": "octocoder",
-            "release_date": 1672527600000,
-            "link": "www.baidu.com"
+            "model_name": "octocoder"
+
+            
         },
         {
-            "model_name": "GPT3.5",
-            "release_date": 1672527600000,
-            "link": "www.baidu.com"
+            "model_name": "GPT3.5"
+
+            
         },
         {
-            "model_name": "codeqwen-7b-chat",
-            "release_date": 1672527600000,
-            "link": "www.baidu.com"
+            "model_name": "codeqwen-7b-chat"
+
+            
         },
         {
-            "model_name": "codeqwen-7b-chat-complete-v3.jsonl",
-            "release_date": 1672527600000,
-            "link": "www.baidu.com"
+            "model_name": "codeqwen-7b-chat-complete-v3.jsonl"
+
+            
         }
     ],
     "date_marks": [

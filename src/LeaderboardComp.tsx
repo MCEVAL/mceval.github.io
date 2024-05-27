@@ -111,8 +111,9 @@ const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
     return getLeaderboard(
       performances,
       models,
-      dateStartAndEnd[0],
-      dateStartAndEnd[1]
+      //dateStartAndEnd[0],
+      //dateStartAndEnd[1]
+      0,0
     );
   }, [performances, models, dateStartAndEnd]);
 
@@ -120,8 +121,10 @@ const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
 
   const numProblems = performances.filter(
     (result: any) =>
-      result["date"] >= dateStartAndEnd[0] &&
-      result["date"] <= dateStartAndEnd[1]
+      //result["date"] >= dateStartAndEnd[0] &&
+      //result["date"] <= dateStartAndEnd[1]
+      result["date"] >= 0 &&
+      result["date"] <= 1
   ).length;
 
 
@@ -180,7 +183,8 @@ const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
 
   const gridStyle = useMemo(
     () => ({
-      height: `${Math.min(42 * rowData.length, 1500)}px`, // Adjust 600 to your desired max height
+      //height: `${Math.min(42 * rowData.length, 1500)}px`, // Adjust 600 to your desired max height
+      height:`${Math.min(50 * rowData.length, 1000)}px`,
       // height: "100%",
       "--ag-font-family": FONT_FAMILY,
       // minWidth: "760px",
@@ -191,7 +195,6 @@ const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
     }),
     [rowData]
   )
-  console.log("rowData.length", rowData.length)
 
   const autoSizeStrategy = {
     type: 'fitCellContents'
@@ -201,9 +204,7 @@ const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
   if (page_idx !== "infilling"){
     groupDisplayType = 'custom'
   }
-  console.log("groupDisplayType  page_idx", groupDisplayType, page_idx)
-  console.log("columnDefs", columnDefs)
-  console.log("rowData", rowData)
+
 
   let message = `${numProblems} problems selected in the current time window.`;
 
@@ -220,45 +221,13 @@ const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
   message += "<br><br>We estimate cutoff dates based on release date and performance variation. Feel free to adjust the slider to see the leaderboard at different time windows. Please offer feedback if you find any issues!"
 
 
-
+//display: numProblems === 0 ? "none" : "flex",
   return (
     <div style={{ width: "100%", height: "100%" }}>
-      <ThemeProvider theme={muiTheme}>
-        <CssBaseline />
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <b>{message.split("<br>").map((line, index) => (
-            <React.Fragment key={index}>
-              {line}
-              <br />
-            </React.Fragment>
-          ))}</b>
-        </div>
-
-
-        <Box sx={{ width: "100%" }} px={6} pt={5} pb={2}>
-
-          <Grid container justifyContent="center">
-            <Grid item xs={12}>
-
-              <Slider
-                aria-label="Date Slider"
-                value={dateStartAndEnd}
-                onChange={dateSliderHandleChange}
-                valueLabelFormat={dateLabelFormat}
-                getAriaValueText={dateAriaText}
-                step={null}
-                valueLabelDisplay="on"
-                marks={dateMarks}
-                min={dateMarks[0].value}
-                max={dateMarks[dateMarks.length - 1].value}
-              />
-            </Grid>
-          </Grid>
-        </Box>
-      </ThemeProvider>
+      
       <div
         style={{
-          display: numProblems === 0 ? "none" : "flex",
+          display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}

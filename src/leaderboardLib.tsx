@@ -17,18 +17,23 @@ function get_pass_at_1(
   end: number
 ) {
   // model and date filter
+  /*
   const results = results_df.filter(
     (result) =>
       result["model"] === model &&
       result["date"] >= start &&
       result["date"] <= end
   )
-
+  */
+  const results = results_df.filter(
+    (result) =>
+      result["model"] === model
+  )
   const dictionary: { [key: string]: any } = {};
 
   if (results.length > 0 && results[0] !== null) {
     Object.keys(results[0]).forEach(key => {
-      dictionary[key] = parseFloat(mean(results.map((result) => result[key])).toFixed(2));
+      dictionary[key] = parseFloat(mean(results.map((result) => result[key])).toFixed(3));
     });
   }else{
     console.log(`${model}: 不存在`);
@@ -46,18 +51,18 @@ function getLeaderboard(
   end: number
 ) {
   return models
-    .filter((model) => model.release_date)
+    //.filter((model) => model.release_date)
     .map((model) => {
       const { dictionary } = get_pass_at_1(
         performances,
         model.model_name,
-        start,
-        end
+        0,
+        0
       )
       let output: { [key: string]: any } = {}
       output["Model"] = model.model_name
-      output["Estimated Cutoff For LiveCodeBench"] = "Estimated Cutoff For LiveCodeBench: " + new Date(model.release_date).toLocaleDateString()
-      output["Contaminated"] = model.release_date >= start 
+      //output["Estimated Cutoff For LiveCodeBench"] = "Estimated Cutoff For LiveCodeBench: " + new Date(model.release_date).toLocaleDateString()
+      output["Contaminated"] = false 
       Object.keys(dictionary).forEach(key => {
         if (key != "model" && key != "date"){
           output[key] = dictionary[key]
@@ -154,7 +159,7 @@ function getColumnDefs(columnNames: Array<string>, modelsDict: any, page_idx : s
           }else if (column_name.length <3){
             mwidth = 70
           }
-          console.log("column_name", column_name, column_name.length, mwidth)
+          // console.log("column_name", column_name, column_name.length, mwidth)
           return {
             field: column_name,
               minWidth: mwidth,

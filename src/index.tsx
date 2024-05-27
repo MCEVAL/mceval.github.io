@@ -75,8 +75,7 @@ ReactDOM.render(
           <div className="columns  is-fullwidth">
             <div className="column has-text-centered is-fullwidth">
               <h1 className="title is-1 publication-title">
-                LiveCodeBench: Holistic and Contamination Free Evaluation of
-                Large Language Models for Code
+                MCEVAL: Massively Multilingual Code Evaluation
               </h1>
               <div className="column has-text-centered">
                 <div className="publication-links">

@@ -43,8 +43,8 @@
             "Tcl": 0.5,
             "TS": 0.72,
             "VB": 0.68,
-            "VimL": 0.5,
-            "date": 1708214400000
+            "VimL": 0.5
+            
         },
         {
             "model": "code-llama-7b",
@@ -89,8 +89,8 @@
             "Tcl": 0.28,
             "TS": 0.3,
             "VB": 0.4,
-            "VimL": 0.12,
-            "date": 1708214400000
+            "VimL": 0.12
+            
         },
         {
             "model": "code-llama-13b",
@@ -135,8 +135,8 @@
             "Tcl": 0.32,
             "TS": 0.42,
             "VB": 0.5,
-            "VimL": 0.24,
-            "date": 1708214400000
+            "VimL": 0.24
+            
         },
         {
             "model": "deepseek-coder-7b-instruct",
@@ -181,8 +181,8 @@
             "Tcl": 0.56,
             "TS": 0.62,
             "VB": 0.66,
-            "VimL": 0.4,
-            "date": 1708214400000
+            "VimL": 0.4
+            
         },
         {
             "model": "Magicoder-S-DS-6.7B",
@@ -227,8 +227,8 @@
             "Tcl": 0.42,
             "TS": 0.56,
             "VB": 0.62,
-            "VimL": 0.24,
-            "date": 1708214400000
+            "VimL": 0.24
+            
         },
         {
             "model": "octocoder",
@@ -273,8 +273,8 @@
             "Tcl": 0.24,
             "TS": 0.34,
             "VB": 0.38,
-            "VimL": 0.08,
-            "date": 1708214400000
+            "VimL": 0.08
+            
         },
         {
             "model": "WizardCoder-15B-V1.0",
@@ -319,8 +319,8 @@
             "Tcl": null,
             "TS": null,
             "VB": null,
-            "VimL": null,
-            "date": 1708214400000
+            "VimL": null
+            
         },
         {
             "model": "gpt3",
@@ -365,50 +365,34 @@
             "Tcl": 0.4,
             "TS": 0.62,
             "VB": 0.62,
-            "VimL": 0.36,
-            "date": 1708214400000
+            "VimL": 0.36
+            
         }
     ],
     "models": [
         {
-            "model_name": "gpt4",
-            "release_date": 1672527600000,
-            "link": "www.baidu.com"
+            "model_name": "gpt4"
         },
         {
-            "model_name": "code-llama-7b",
-            "release_date": 1672527600000,
-            "link": "www.baidu.com"
+            "model_name": "code-llama-7b"
         },
         {
-            "model_name": "code-llama-13b",
-            "release_date": 1672527600000,
-            "link": "www.baidu.com"
+            "model_name": "code-llama-13b"
         },
         {
-            "model_name": "deepseek-coder-7b-instruct",
-            "release_date": 1672527600000,
-            "link": "www.baidu.com"
+            "model_name": "deepseek-coder-7b-instruct"
         },
         {
-            "model_name": "Magicoder-S-DS-6.7B",
-            "release_date": 1672527600000,
-            "link": "www.baidu.com"
+            "model_name": "Magicoder-S-DS-6.7B"
         },
         {
-            "model_name": "octocoder",
-            "release_date": 1672527600000,
-            "link": "www.baidu.com"
+            "model_name": "octocoder"
         },
         {
-            "model_name": "WizardCoder-15B-V1.0",
-            "release_date": 1672527600000,
-            "link": "www.baidu.com"
+            "model_name": "WizardCoder-15B-V1.0"
         },
         {
-            "model_name": "gpt3",
-            "release_date": 1672527600000,
-            "link": "www.baidu.com"
+            "model_name": "gpt3"
         }
     ],
     "date_marks": [
