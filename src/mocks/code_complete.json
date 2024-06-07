@@ -43,8 +43,6 @@
             "TS": 0.6,
             "VB": 0.68,
             "VimL": 0.38
-
-            
         },
         {
             "model": "deepseek-coder-7b-instruct",
@@ -89,8 +87,6 @@
             "TS": 0.5,
             "VB": 0.58,
             "VimL": 0.2
-
-            
         },
         {
             "model": "code-llama-7b",
@@ -135,8 +131,6 @@
             "TS": 0.28,
             "VB": 0.34,
             "VimL": 0.14
-
-            
         },
         {
             "model": "code-llama-13b",
@@ -181,8 +175,6 @@
             "TS": 0.4,
             "VB": 0.38,
             "VimL": 0.1
-
-            
         },
         {
             "model": "Magicoder-S-DS-6.7B",
@@ -227,8 +219,6 @@
             "TS": 0.5,
             "VB": 0.68,
             "VimL": 0.16
-
-            
         },
         {
             "model": "WizardCoder-15B-V1.0",
@@ -273,8 +263,6 @@
             "TS": 0.42,
             "VB": 0.36,
             "VimL": 0.18
-
-            
         },
         {
             "model": "octocoder",
@@ -319,7 +307,6 @@
             "TS": 0.38,
             "VB": 0.28,
             "VimL": 0.14
-
         },
         {
             "model": "GPT3.5",
@@ -364,8 +351,6 @@
             "TS": 0.54,
             "VB": 0.74,
             "VimL": 0.24
-
-            
         },
         {
             "model": "codeqwen-7b-chat",
@@ -410,8 +395,6 @@
             "TS": 0.54,
             "VB": 0.56,
             "VimL": 0.18
-
-            
         },
         {
             "model": "codeqwen-7b-chat-complete-v3.jsonl",
@@ -456,60 +439,38 @@
             "TS": 0.44,
             "VB": 0.08,
             "VimL": 0.48
-
-            
         }
     ],
     "models": [
         {
             "model_name": "gpt4"
-
-            
         },
         {
             "model_name": "deepseek-coder-7b-instruct"
-
-        
         },
         {
             "model_name": "code-llama-7b"
-
-            
         },
         {
             "model_name": "code-llama-13b"
-
-            
         },
         {
             "model_name": "Magicoder-S-DS-6.7B"
-
-            
         },
         {
             "model_name": "WizardCoder-15B-V1.0"
-
-            
         },
         {
             "model_name": "octocoder"
-
-            
         },
         {
             "model_name": "GPT3.5"
-
-            
         },
         {
             "model_name": "codeqwen-7b-chat"
-
-            
         },
         {
             "model_name": "codeqwen-7b-chat-complete-v3.jsonl"
-
-            
         }
     ],
     "date_marks": [
