@@ -89,7 +89,7 @@ ReactDOM.render(
                   </span>
 
                   <span className="link-block">
-                    <a href=""
+                    <a href="https://github.com/MCEVAL/McEval"
                       className="external-link button is-normal is-rounded is-dark">
                       <span className="icon">
                         <i className="fab fa-github"></i>
@@ -99,12 +99,22 @@ ReactDOM.render(
                   </span>
 
                   <span className="link-block">
-                    <a href=""
+                    <a href="https://huggingface.co/datasets/Multilingual-Multimodal-NLP/McEval"
                       className="external-link button is-normal is-rounded is-dark">
                       <span className="icon">
                         <i className="far fa-images"></i>
                       </span>
-                      <span>Data</span>
+                      <span>Evaluation Data</span>
+                    </a>
+                  </span>
+
+                  <span className="link-block">
+                    <a href="https://huggingface.co/datasets/Multilingual-Multimodal-NLP/McEval-Instruct"
+                      className="external-link button is-normal is-rounded is-dark">
+                      <span className="icon">
+                        <i className="far fa-images"></i>
+                      </span>
+                      <span>McEval-Instruct</span>
                     </a>
                   </span>
 
