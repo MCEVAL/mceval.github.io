@@ -23,12 +23,12 @@ import {
 
 import "./LeaderboardAgGrid.css"
 import styles from "./Leaderboard.module.css"
-const FONT_FAMILY = "'JetBrains Mono', monospace"
+const FONT_FAMILY = "'JetBrains Mono', monospace, 0.3em"
 
 const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
   // args from Streamlit
   let args = props.args;
-  const { performances, models, date_marks } = args;
+  const [{ performances, models, date_marks, tasks}, page_idx]= args;
 
 
   const [isMobileCompressed, setIsMobileCompressed] = useState(window.innerWidth < 768);
@@ -44,7 +44,7 @@ const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
 
   const modelsDict = useMemo(() => {
     return models.reduce((acc: any, model: any) => {
-      acc[model.model_repr] = model
+      acc[model.model_name] = model
       return acc
     }, {})
   }, [models])
@@ -106,46 +106,25 @@ const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
 
   const dateAriaText = dateLabelFormat
 
-  // ********* AgGrid *********
-
-  // const leaderboard = getLeaderboard(
-  //   performances,
-  //   models,
-  //   dateStartAndEnd[0],
-  //   dateStartAndEnd[1]
-  // )
 
   const leaderboard = useMemo(() => {
     return getLeaderboard(
       performances,
       models,
-      dateStartAndEnd[0],
-      dateStartAndEnd[1]
+      //dateStartAndEnd[0],
+      //dateStartAndEnd[1]
+      0,0
     );
   }, [performances, models, dateStartAndEnd]);
 
-  if (isMobileCompressed) {
-    // remove columns from leaderboard
-    // remove Easy-Pass@1, Medium-Pass@1, Hard-Pass@1
-
-    // will delete throw error if column not found
-
-    leaderboard.forEach((row: any) => {
-      delete row["Easy-Pass@1"];
-      delete row["Medium-Pass@1"];
-      delete row["Hard-Pass@1"];
-      delete row["Pass@1 (no COT)"];
-    });
-
-  }
-  // console.log(leaderboard)
 
 
   const numProblems = performances.filter(
     (result: any) =>
-      result["model"] === "GPT-3.5-Turbo-0301" &&
-      result["date"] >= dateStartAndEnd[0] &&
-      result["date"] <= dateStartAndEnd[1]
+      //result["date"] >= dateStartAndEnd[0] &&
+      //result["date"] <= dateStartAndEnd[1]
+      result["date"] >= 0 &&
+      result["date"] <= 1
   ).length;
 
 
@@ -179,14 +158,13 @@ const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
   }, [leaderboard]);
 
   const [columnDefs, setColumnDefs] = useState(
-    getColumnDefs(columnNames, modelsDict)
+    getColumnDefs(columnNames, modelsDict, page_idx)
   )
 
   useEffect(() => {
     // console.log('Component re-rendered due to changes in column:', columnNames, modelsDict);
-    setColumnDefs(getColumnDefs(columnNames, modelsDict));
+    setColumnDefs(getColumnDefs(columnNames, modelsDict, page_idx));
   }, [columnNames, modelsDict]);
-
 
   // console.log(columnNames, modelsDict);
   // ********* Styles and return *********
@@ -205,7 +183,8 @@ const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
 
   const gridStyle = useMemo(
     () => ({
-      height: `${Math.min(42 * rowData.length, 1000)}px`, // Adjust 600 to your desired max height
+      //height: `${Math.min(42 * rowData.length, 1500)}px`, // Adjust 600 to your desired max height
+      height:`${Math.min(50 * rowData.length, 1000)}px`,
       // height: "100%",
       "--ag-font-family": FONT_FAMILY,
       // minWidth: "760px",
@@ -217,9 +196,13 @@ const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
     [rowData]
   )
 
-
   const autoSizeStrategy = {
     type: 'fitCellContents'
+  }
+
+  let groupDisplayType = 'groupRows';
+  if (page_idx !== "infilling"){
+    groupDisplayType = 'custom'
   }
 
 
@@ -238,59 +221,28 @@ const Leaderboard = React.memo(function LeaderboardComponent(props: any) {
   message += "<br><br>We estimate cutoff dates based on release date and performance variation. Feel free to adjust the slider to see the leaderboard at different time windows. Please offer feedback if you find any issues!"
 
 
-
+//display: numProblems === 0 ? "none" : "flex",
   return (
     <div style={{ width: "100%", height: "100%" }}>
-      <ThemeProvider theme={muiTheme}>
-        <CssBaseline />
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <b>{message.split("<br>").map((line, index) => (
-            <React.Fragment key={index}>
-              {line}
-              <br />
-            </React.Fragment>
-          ))}</b>
-        </div>
-
-
-        <Box sx={{ width: "100%" }} px={6} pt={5} pb={2}>
-
-          <Grid container justifyContent="center">
-            <Grid item xs={12}>
-
-              <Slider
-                aria-label="Date Slider"
-                value={dateStartAndEnd}
-                onChange={dateSliderHandleChange}
-                valueLabelFormat={dateLabelFormat}
-                getAriaValueText={dateAriaText}
-                step={null}
-                valueLabelDisplay="on"
-                marks={dateMarks}
-                min={dateMarks[0].value}
-                max={dateMarks[dateMarks.length - 1].value}
-              />
-            </Grid>
-          </Grid>
-        </Box>
-      </ThemeProvider>
+      
       <div
         style={{
-          display: numProblems === 0 ? "none" : "flex"
-          ,
+          display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }} id='flexGridWrapper'>
-          <div style={{ flexGrow: "1", width: "100%", display: "flex", justifyContent: "center" }}> {/* Center the grid */}
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center",  height: "100%", width: "100%" }} id='flexGridWrapper'>
+          <div style={{ flexGrow: "1", height: "100%", width: "100%", display: "flex", justifyContent: "center" }}> {/* Center the grid */}
             <div style={gridStyle} className={agGridTheme}>
               {/* @ts-ignore */}
 
               <AgGridReact
+                
                 ref={gridRef}
                 rowData={rowData}
                 columnDefs={columnDefs}
+                groupDisplayType={groupDisplayType}
                 defaultColDef={defaultColDef}
                 rowClassRules={rowClassRules}
                 rowSelection={"multiple"}

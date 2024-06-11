@@ -91,19 +91,37 @@
               <span class="author-block">
                 <a href="">Jiaheng Liu</a><sup>1</sup>,</span>
               <span class="author-block">
-                <a href="">Xianjie Wu</a>,</span>
-              <span class="author-block">
-                <a href="">Changyu Ren</a><sup>2</sup>,</span>
-              <span class="author-block">
                 <a href="">Tao Sun</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="">Ge Zhang</a><sup>3</sup>,</span>
+              <span class="author-block">
+                <a href="">Changyu Ren</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="">Hongcheng Guo</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="">Zekun Wang</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="">Boyang Wang</a><sup>1</sup></span>
+              <span class="author-block">
+                <a href="">Xianjie Wu</a><sup>1</sup></span>
+              <span class="author-block">
+                <a href="">Bing Wang</a><sup>1</sup></span>
+              <span class="author-block">
+                <a href="">Tongliang Li</a><sup>4</sup></span>
+              <span class="author-block">
+                <a href="">Liqun Yang</a><sup>1</sup></span>
+              <span class="author-block">
+                <a href="">Sufeng Duan</a><sup>5</sup></span>
               <span class="author-block">
                 <a href="">Zhoujun Li</a><sup>1</sup></span>
             </div>
 
             <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>1</sup>Beihang University</span>
-              <span class="author-block"><sup>2</sup>xxx</span>
-              <span class="author-block"><sup>3</sup>xxx</span>
+              <span class="author-block"><sup>1</sup>CCSE, Beihang University</span>
+              <span class="author-block"><sup>2</sup>University of British Columbia</span>
+              <span class="author-block"><sup>3</sup>University of Waterloo</span>
+              <span class="author-block"><sup>4</sup>Beijing Information Science and Technology University</span>
+              <span class="author-block"><sup>5</sup>Shanghai Jiao Tong University</span>
             </div>
 
             <div class="column has-text-centered">
@@ -158,16 +176,16 @@
       <div class="hero-body">
         <div class="columns is-centered">
           <!-- center the image -->
-          <img src="./images/mceval_intro.png" alt="Teaser" class="teaser-image center" width="80%" />
+          <img src="./images/mceval_intro.png" alt="Teaser" class="teaser-image center" width="60%" />
         </div>
-
+        <!--
         <h2 class="subtitle has-text-centered">
           <span class="dnerf">MCEVAL</span> collects problems from periodic contests on <span
             class="dnerf">LeetCode</span>, <span class="dnerf">AtCoder</span>, and <span class="dnerf">Codeforces</span>
           platforms and uses them for constructing a holistic benchmark for evaluating Code LLMs across variety of
           code-related scenarios continuously over time.
         </h2>
-
+        -->
       </div>
     </div>
   </section>
@@ -181,7 +199,12 @@
           <h2 class="title is-3">Introduction</h2>
           <div class="content has-text-justified">
             <p>
-              MVEVAL is a 
+              MCEVAL is the first massively multilingual code
+              evaluation benchmark (from human handwriting) 
+              covering 40 languages (16K samples in 44 total), 
+              encompassing multilingual code generation,
+              multilingual code explanation,and multilingual
+              code completion tasks.
             </p>
           </div>
         </div>
@@ -189,7 +212,7 @@
       <!--/ Abstract. -->
     </div>
   </section>
-
+  <!--
   <section class="section">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
@@ -202,7 +225,7 @@
               with a training-cutoff date <span class="dnerf">D</span>, we can evaluate it on problems released after
               <span class="dnerf">D</span> to measure its generalization on <i>unseen</i> problems.
             </p>
-            <!-- side by side images-->
+            <!-- side by side images->
             <div class="columns is-centered">
               <img src="./images/contamination1.png" alt="Code Generation Live Evaluation" class="teaser-image"
                 width="48%" class="center" />
@@ -251,7 +274,7 @@
                 class="center" />
 
               <!-- <img src="./images/lcb_vs_he.png" alt="HumanEval Overfitting" class="teaser-image" width="55%"
-                height="55%" class="center" /> -->
+                height="55%" class="center" /> ->
             </div>
             <p>
               We compare the performance of open access models with closed api-access models on <span
@@ -349,16 +372,314 @@
     </div>
   </section>
 
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Potential Overfitting in HumanEval</h2>
+          <div class="content has-text-justified">
+            <div class="columns is-centered">
+              <img src="./images/lcb_vs_he.png" alt="HumanEval Overfitting" class="teaser-image center" width="80%"
+                height="80%" />
+            </div>
+            <p>
+              We also find that models that perform well on <span class="dnerf">HumanEval</span> might be overfitting on
+              the benchmark. Particularly, the models are separated into two clusters depicted
+              by the green and red shaded region in the right scatterplot. The models in the green region perform
+              similarly on
+              <span class="dnerf">HumanEval</span> and <span class="dnerf">LCB-Easy</span>, while the models in the red
+              region
+              perform well on <span class="dnerf">HumanEval</span> but lag behind on <span
+                class="dnerf">LCB-Easy</span>.
+              For instance, <span class="dnerf">DS-Ins-1.3B</span> model outperforms <span
+                class="dnerf">Gemini-Pro</span> and <span class="dnerf">Claude-Ins-1</span> but performs considerably
+              worse on <span class="dnerf">LCB-Easy</span>.
+              Interestingly, the models in the red region are mostly fine-tuned variants of open access models. On the
+              other hand, base models and most of the closed api-access models lie in the green region. This highlights
+              a potential lack of diverse fine-tuning data being employed by the open source community and the need for
+              optimizing models for a broader set of code-related tasks.
+            </p>
+          </div>
+        </div>
+      </div>
+  </section>
+  -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Dataset Statistics</h2>
+          <div class="content has-text-justified">
+            <div class="columns is-centered">
+              <img src="./images/1_statistics.png" alt="HumanEval Overfitting" class="teaser-image center" width="80%"
+                height="80%" />
+            </div>
+            <p>
+              Figure2 plots the length of input length,the length of output,and the number of
+              testcases of each programming language.The multilingual code generation and explanation tasks
+              separately contain 2K samples,where each language has nearly 50 samples.The code completion
+              task can be decomposed into multi-line completion(3K samples),single-line completion(3K samples), 78
+              span completion(4K samples),and span completion (light)(2K samples)
+            </p>
+          </div>
+        </div>
+      </div>
+  </section>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3"> Human Annotation&Quality Control</h2>
+          <div class="content has-text-justified">
+            <div class="columns is-centered">
+              <img src="./images/2_bench_cases.png" alt="HumanEval Overfitting" class="teaser-image center" width="80%"
+                height="80%" />
+            </div>
+            <p>
+              To create the massively multilingual code evaluation benchmark MCEVAL,the annotation of multilingual
+              code samples is conducted utilizing a comprehensive and systematic human annotation procedure,
+              underpinned by rigorously defined guidelines to ensure accuracy and consistency. 
+              Following a detailed training session on the annotation protocol,which emphasizes the importance of context,
+              syntactical correctness, and semantic fidelity across languages,annotators are tasked with creating problem definitions and
+              the corresponding solution.
+            </p>
+          </div>
+        </div>
+      </div>  
+  </section>
+<section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">MCODER</h2>
+          <div class="content has-text-justified">
+            <div class="columns is-centered">
+              <img src="./images/3_framework.png" alt="HumanEval Overfitting" class="teaser-image center" width="80%"
+                height="80%" />
+            </div>
+            <p>
+              
+            </p>
+          </div>
+        </div>
+      </div>
+</section>
+<section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Further Analysis</h2>
+          <div class="content has-text-justified">
+            <div class="columns is-centered">
+              <img src="./images/4_code_class.png" alt="HumanEval Overfitting" class="teaser-image center" width="80%"
+                height="80%" />
+            </div>
+            <p>
+              we categorize the programming languages of MCEVAL into 5 programming paradigms and 11 application scenarios and summarize the performance of code LLMs on the code generation task in Figure6. 
+            </p>
+          </div>
+        </div>
+      </div>
+</section>
+<section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">The performance of models in code completion tasks under different categories.</h2>
+          <div class="content has-text-justified">
+            <div class="columns is-centered">
+              <img src="./images/5_radar_class_result.png" alt="HumanEval Overfitting" class="teaser-image center" width="80%"
+                height="80%" />
+            </div>
+            <p>
+              It can be observed that code LLMs generally perform better in object-oriented and multi-paradigm 
+              programming languages(high-resource languages), while perform worse in functional and procedural programming languages(low-resourceLanguages).
+              In areas like web development and scientific computing,the gap between open-source and closed-source models is narrowing. However, for application scenarios, there is still a substantial gap
+              between open-source models and the closed-source GPT-4 series in low-resource languages related to scripting,mobile development, and educational research.MCODER performs superior over multiple same-size models and even some larger open-source models.
+            </p>
+          </div>
+        </div>
+      </div>
+</section>
+<section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Unbalance on Different Languages.</h2>
+          <div class="content has-text-justified">
+            <div class="columns is-centered">
+              <img src="./images/6_cross_dataset.png" alt="HumanEval Overfitting" class="teaser-image center" width="80%"
+                height="80%" />
+            </div>
+            <p>
+              We compare the results of several open-source models on the Multipl-E multilingual benchmark with corresponding languages on MCEVAL.
+              We obtained scores for 11 programming languages (including Python,Java,JavaScript,C++,PHP,Rust,Swift,R,Lua,Racket,Julia) from the BigCode
+              leaderboard.As shown in Figure7(1),due to the simplicity of Python language tasks in this dataset,many models exhibit significant score discrepancies between the
+              two benchmarks.By examining Figure7(2) and (3),it becomes evident that all models demonstrate
+              consistent multilingual capabilities between Multipl-E and MCEVAL.However,Figure7(2) highlights
+              a majority of models within the blue circle,indicating that the current state-of-the-art performance
+              of most models primarily lies in high-resource languages like Python,while their proficiency in
+              low-resource languages awaits further exploration and enhancement.
+            </p>
+          </div>
+        </div>
+      </div>
+</section>
+<section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Cross-lingual Transfer.</h2>
+          <div class="content has-text-justified">
+            <div class="columns is-centered">
+              <img src="./images/7_cross-lingual-transfer.png" alt="HumanEval Overfitting" class="teaser-image center" width="80%"
+                height="80%" />
+            </div>
+            <p>
+              We fine-tune the CodeQwen-1.5 model using Python-only data in MCEVAL-INSTRUCT
+and compare it with MCODER. In Figure8, CodeQwen-1.5 performs well in mosthigh-resourcelanguages,butCodeQwenwithoutalignmentexhibitsunsatisfactoryresultsin 209
+ some low-resource languages due to the inability to follow instructions.As such,with fine-tuning using only Python data,
+CodeQwen-1.5-Python improves significantly across most languages. It shows that the CodeQwen foundation model already possesses strong coding capabilities 
+but lacks adequate instruction-following skills.Therefore,fine-tuning with Python-only data can still effectively transfer instruction-following abilities to other languages,
+resulting in superior multilingual performance.
+            </p>
+          </div>
+        </div>
+      </div>
+</section>
+<section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">CodeQwen-1.5-Chat performance on MCEVAL for problems of different difficulty levels.</h2>
+          <div class="content has-text-justified">
+            <div class="columns is-centered">
+              <img src="./images/8_level_statistics.png" alt="HumanEval Overfitting" class="teaser-image center" width="80%"
+                height="80%" />
+            </div>
+            <p>
+              Based on algorithmic complexity,we classify MCEVAL into three levels(Easy/Medium/Hard).
+In Figure 1,we conduct a statistical analysis of CodeQwen-1.5-Chat's performance on code generation tasks 
+across various languages.For most languages,the codeLLM can answer the majority of easy questions but struggles with medium and hardones.
+            </p>
+          </div>
+        </div>
+      </div>
+</section>
+<section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Examples of multilingual generation.</h2>
+          <div class="content has-text-justified">
+            <div class="columns is-centered">
+              <img src="./images/9_bench_completion_cases.png" alt="HumanEval Overfitting" class="teaser-image center" width="80%"
+                height="80%" />
+            </div>
+            <p>
+              The data mainly consists of an instruction part
+              (including function name, function description,and function callcases),a reference solution,and
+              a test cases part.Left.Shows an example of the Lisp language.Middle.Shows a file processing
+              programming task in AWK language.During the evaluation,the corresponding file processing result
+              by the generated code will be compared with the reference answer.Right.Shows an example of the R language.
+            </p>
+          </div>
+        </div>
+      </div>
+</section>
+<section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Examples of multilingual explanation.</h2>
+          <div class="content has-text-justified">
+            <div class="columns is-centered">
+              <img src="./images/10_bench_explain_cases.png" alt="HumanEval Overfitting" class="teaser-image center" width="80%"
+                height="80%" />
+            </div>
+            <p>
+              The data mainly consists of an instruction part (including a complete function),
+              a reference Explanation. Left.Shows an example of the Kotlin language.Middle.Shows an example of 
+              the Lua language.Right.Shows an example of the HTML language.
+            </p>
+          </div>
+        </div>
+      </div>
+</section>
+<section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Examples of multilingual completion. </h2>
+          <div class="content has-text-justified">
+            <div class="columns is-centered">
+              <img src="./images/11_bench_fim_cases.png" alt="HumanEval Overfitting" class="teaser-image center" width="80%"
+                height="80%" />
+            </div>
+            <p>
+              The data mainly consists of an instruction part
+ (including a incomplete function ), a reference complete code solution and test cases. Left. Shows an
+ span completion example of the C++ language. Middle. Shows an single line completion example of
+ the Rust language. Right. Shows an multiple line completion example of the Shell language.
+            </p>
+          </div>
+        </div>
+      </div>
+</section>
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Optimization Details</h2>
+        <div class="content has-text-justified">
+          <div class="columns is-centered">
+            <img src="./images/12_ts.png" alt="HumanEval Overfitting" class="teaser-image center" width="80%"
+              height="80%" />
+          </div>
+          <p>
+            All MCODER models are fine-tuned using 8 NVIDIA A800-80GB GPUs. The models are trained for
+            2 epochs with a cosine scheduler, starting at a learning rate of 2e-5 and incorporating a 3% warmup
+            phase. Training a model takes about 5 hours. We used AdamW (Loshchilov and Hutter, 2017) as
+            the optimizer and a batch size of 512 with a sequence truncation length of 4096. We use PyTorch’s
+            Fully Sharded Data Parallel (FSDP) to perform distributed training of the model, and use gradient
+            checkpointing technology and gradient accumulation to save memory and achieve training with a
+            larger batch size.
+          </p>
+        </div>
+      </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Analysis from the representation perspective on MCEVAL.Languages with similar syntax
+            have closely related representations</h2>
+          <div class="content has-text-justified">
+            <div class="columns is-centered">
+              <img src="./images/12_cluster_merge.png" alt="HumanEval Overfitting" class="teaser-image center" width="80%"
+                height="80%" />
+            </div>
+            <p>
+              As shown in Figure14,we analyzed the programming languages in the MCEVAL from there presentation perspective.
+We used CodeBERT(Fengetal.,2020) to extract code representations from codesnippets in MCEVAL.
+These representations were visualized using t-SNE(Van der Maaten and Hinton,2008)and hierarchical clustering(Murtagh and Contreras,2012)methods.
+The figure clearly shows that languages with similar syntax have closely related representations. For example,other functional programming languages similar to CommonLisp,as well as C,C++,Java,and scripting
+languages,exhibit high grammar similarity.
+            </p>
+          </div>
+        </div>
+      </div>
+</section>
 
-
-
+<!--
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
       <pre><code></code></pre>
     </div>
   </section>
-
+-->
   <footer class="footer">
     <div class="container">
 

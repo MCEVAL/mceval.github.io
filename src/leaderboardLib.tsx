@@ -10,34 +10,6 @@ function formatNumber(number: number) {
   return Number(number.toFixed(1))
 }
 
-/**
- * ```python
- * def _get_pass_at_1(model):
- *     results = results_df[results_df["model"] == model]
- *     # date filter
- *     results = results[results["date"] >= start]
- *     results = results[results["date"] <= end]
- *     average_pass = results["pass@1"].mean()
- *     easy_pass = results[results["difficulty"] == "easy"]["pass@1"].mean()
- *     medium_pass = results[results["difficulty"] == "medium"]["pass@1"].mean()
- *     hard_pass = results[results["difficulty"] == "hard"]["pass@1"].mean()
- *     atcoder_pass = results[results["platform"] == "atcoder"]["pass@1"].mean()
- *     codeforces_pass = results[results["platform"] == "codeforces"]["pass@1"].mean()
- *     leetcode_pass = results[results["platform"] == "leetcode"]["pass@1"].mean()
- *     # print(results['platform'].value_counts())
- *     hard_results = results[results["difficulty"] == "hard"]
- *     print(model, "-->", hard_results[(hard_results["pass@1"] > 0)].question_id.tolist())
- *     return (
- *         average_pass,
- *         easy_pass,
- *         medium_pass,
- *         hard_pass,
- *         atcoder_pass,
- *         leetcode_pass,
- *         codeforces_pass,
- *     )
- * ```
- */
 function get_pass_at_1(
   results_df: Array<any>,
   model: string,
@@ -45,89 +17,33 @@ function get_pass_at_1(
   end: number
 ) {
   // model and date filter
+  /*
   const results = results_df.filter(
     (result) =>
       result["model"] === model &&
       result["date"] >= start &&
       result["date"] <= end
   )
+  */
+  const results = results_df.filter(
+    (result) =>
+      result["model"] === model
+  )
+  const dictionary: { [key: string]: any } = {};
 
-  const average_pass = formatNumber(
-    mean(results.map((result) => result["pass@1"]))
-  )
-  const easy_pass = formatNumber(
-    mean(
-      results
-        .filter((result) => result["difficulty"] === "easy")
-        .map((result) => result["pass@1"])
-    )
-  )
-  const medium_pass = formatNumber(
-    mean(
-      results
-        .filter((result) => result["difficulty"] === "medium")
-        .map((result) => result["pass@1"])
-    )
-  )
-  const hard_pass = formatNumber(
-    mean(
-      results
-        .filter((result) => result["difficulty"] === "hard")
-        .map((result) => result["pass@1"])
-    )
-  )
-
-  const exec_pass = formatNumber(
-    mean(results.map((result) => result["Pass@1"]))
-  )
-
-  const cot_pass = formatNumber(
-    mean(results.map((result) => result["Pass@1-COT"]))
-  )
-
-  // console.log("COT PASS: ", cot_pass, cot_pass != undefined, cot_pass != null, cot_pass.toString() != "NaN")
+  if (results.length > 0 && results[0] !== null) {
+    Object.keys(results[0]).forEach(key => {
+      dictionary[key] = parseFloat(mean(results.map((result) => result[key])).toFixed(3));
+    });
+  }else{
+    console.log(`${model}: 不存在`);
+  }
 
   return {
-    average_pass,
-    easy_pass,
-    medium_pass,
-    hard_pass,
-    exec_pass,
-    cot_pass,
+    dictionary
   }
 }
 
-/**
- *
- * ```python
- * pd.DataFrame(
- *     {
- *         model: {
- *             "Model": model.model_repr,
- *             "Release Date": model.release_date.date(),
- *             "Contaminated": model.release_date > start,
- *             "Pass@1": _get_pass_at_1(model.model_repr)[0],
- *             "Easy-Pass@1": _get_pass_at_1(model.model_repr)[1],
- *             "Medium-Pass@1": _get_pass_at_1(model.model_repr)[2],
- *             "Hard-Pass@1": _get_pass_at_1(model.model_repr)[3],
- *             # "AtCoder-Pass@1": _get_pass_at_1(
- *             #     model.model_repr
- *             # )[4],
- *             # "LeetCode-Pass@1": _get_pass_at_1(
- *             #     model.model_repr
- *             # )[5],
- *             # "CodeForces-Pass@1": _get_pass_at_1(
- *             #     model.model_repr
- *             # )[6],
- *             # "Naive Test Cases Correctness": _get_naive_test_cases_correctness(
- *             #     model, questions_filtered
- *             # ),
- *         }
- *         for model in results_df.model_class.unique()
- *     }
- * )
- * ```
- */
 function getLeaderboard(
   performances: Array<any>,
   models: Array<any>,
@@ -135,40 +51,26 @@ function getLeaderboard(
   end: number
 ) {
   return models
-    .filter((model) => model.release_date)
+    //.filter((model) => model.release_date)
     .map((model) => {
-      const { average_pass, easy_pass, medium_pass, hard_pass, exec_pass, cot_pass } = get_pass_at_1(
+      const { dictionary } = get_pass_at_1(
         performances,
-        model.model_repr,
-        start,
-        end
+        model.model_name,
+        0,
+        0
       )
-      if (performances[0].hasOwnProperty("Pass@1-COT")) {
-        let output = {
-          Model: model.model_repr,
-          "Estimated Cutoff For LiveCodeBench":
-            "Estimated Cutoff For LiveCodeBench: " + new Date(model.release_date).toLocaleDateString(),
-          Contaminated: model.release_date >= start,
-          "Pass@1": cot_pass.toString() === "NaN" ? -1 : cot_pass,
-          "Pass@1 (no COT)": exec_pass.toString() === "NaN" ? -1 : exec_pass,
+      let output: { [key: string]: any } = {}
+      output["Model"] = model.model_name
+      //output["Estimated Cutoff For LiveCodeBench"] = "Estimated Cutoff For LiveCodeBench: " + new Date(model.release_date).toLocaleDateString()
+      output["Contaminated"] = false 
+      Object.keys(dictionary).forEach(key => {
+        if (key != "model" && key != "date"){
+          output[key] = dictionary[key]
         }
-        return output
-      }
-      else {
-        let output = {
-          Model: model.model_repr,
-          "Estimated Cutoff For LiveCodeBench":
-            "Estimated Cutoff For LiveCodeBench: " + new Date(model.release_date).toLocaleDateString(),
-          Contaminated: model.release_date >= start,
-          "Pass@1": average_pass.toString() === "NaN" ? -1 : average_pass,
-          "Easy-Pass@1": easy_pass.toString() === "NaN" ? -1 : easy_pass,
-          "Medium-Pass@1": medium_pass.toString() === "NaN" ? -1 : medium_pass,
-          "Hard-Pass@1": hard_pass.toString() === "NaN" ? -1 : hard_pass,
-        }
-        return output
-      }
+      });
+      return output
     })
-    .sort((a, b) => b["Pass@1"] - a["Pass@1"])
+    .sort((a, b) => b["AVG"] - a["AVG"])
     .reduce(
       (
         acc: {
@@ -178,9 +80,10 @@ function getLeaderboard(
         model
       ) => {
         let rank = null
-        if (!model.Contaminated) {
-          rank = acc.rank
+        rank = acc.rank
+        if (acc.results.length>0 && model.AVG != acc.results[acc.results.length - 1].AVG){
           acc.rank += 1
+          rank = acc.rank
         }
         acc.results.push({
           Rank: rank,
@@ -222,103 +125,51 @@ function getDateMarksFromTimestamps(timestamps: Array<number>) {
   }))
 }
 
-function getColumnDefs(columnNames: Array<string>, modelsDict: any) {
+function getColumnDefs(columnNames: Array<string>, modelsDict: any, page_idx : string) {
   // Format the columns into array of { field: "column_name" }
   return columnNames
     .map((column_name) => {
-      switch (column_name) {
-        case "Rank":
-          return {
-            field: column_name,
-            suppressMovable: true,
-            cellClass: 'suppress-movable-col',
-          }
-
-        case "Model":
+        if (column_name == "Model"){
           return {
             field: column_name,
             suppressMovable: true,
             cellClass: 'suppress-movable-col',
             flex: 2,
+            pinned : "left",
             tooltipField: "Estimated Cutoff For LiveCodeBench",
-            cellRenderer: (params: any) => {
-              return modelsDict[params.value].link ? (
-                <a
-                  href={modelsDict[params.value].link}
-                  target="_blank"
-                  className={styles.leaderboardModelLink}
-                >
-                  {params.value}
-                </a>
-              ) : (
-                params.value
-              )
-            },
           }
-
-        case "Estimated Cutoff For LiveCodeBench":
+        }
+        else if (column_name == "Rank"){
+          return {
+            field: column_name,
+            suppressMovable: true,
+            cellClass: 'suppress-movable-col',
+          }
+        }
+        else if (column_name == "Estimated Cutoff For LiveCodeBench"){
           return null
-
-        case "Contaminated":
+        }
+        else if (column_name == "Contaminated"){
           return null
+        }
+        else {
+          let mwidth = 75
+          if (column_name.length > 4){
+            mwidth = 95
+          }else if (column_name.length <3){
+            mwidth = 70
+          }
+          if (column_name == "Scheme" || column_name == "VimL" || column_name == "Ruby"){
+            mwidth = 105
+          }
+          // console.log("column_name", column_name, column_name.length, mwidth)
           return {
             field: column_name,
-            headerTooltip: `
-              Model is considered contaminated if it is released after the start date of
-              the selected problems set.
-            `,
+              minWidth: mwidth,
           }
-
-        case "Pass@1":
-          return {
-            field: column_name,
-            headerTooltip: `
-              Pass@1 is probability of passing a given problem in one attempt.
-            `,
-            sort: "desc",
-          }
-        case "Pass@1-COT":
-          return {
-            field: column_name,
-            headerTooltip: `
-                Pass@1 is probability of passing a given problem in one attempt with CoT.
-              `,
-            sort: "desc",
-          }
-
-        case "Pass@1 (no COT)":
-          return {
-            field: column_name,
-            headerTooltip: `
-                  Pass@1 is probability of passing a given problem in one attempt without CoT.
-                `,
-            sort: "desc",
-          }
-
-        case "Easy-Pass@1":
-          return {
-            field: column_name,
-            headerTooltip: "Pass@1 on problems with Easy difficulty",
-          }
-
-        case "Medium-Pass@1":
-          return {
-            field: column_name,
-            headerTooltip: "Pass@1 on problems with Medium difficulty",
-          }
-
-        case "Hard-Pass@1":
-          return {
-            field: column_name,
-            headerTooltip: "Pass@1 on problems with Hard difficulty",
-          }
-
-        default:
-          return {
-            field: column_name,
-          }
+        }
       }
-    })
+    )
     .filter((columnDef) => columnDef !== null)
 }
 
