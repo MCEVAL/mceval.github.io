@@ -133,7 +133,7 @@
             "VimL": 0.24
         },
         {
-            "model": "deepseek-coder-7b-instruct",
+            "model": "deepseek-coder-instruct",
             "AVG": 0.5579999999999999,
             "AWK": 0.7,
             "C": 0.62,
@@ -364,7 +364,7 @@
             "model_name": "code-llama-13b"
         },
         {
-            "model_name": "deepseek-coder-7b-instruct"
+            "model_name": "deepseek-coder-instruct"
         },
         {
             "model_name": "Magicoder-S-DS-6.7B"

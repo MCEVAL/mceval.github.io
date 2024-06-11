@@ -136,7 +136,7 @@
                   </a>
                 </span>
                 <span class="link-block">
-                  <a href="https://github.com/MCEVAL/MCEVAL"
+                  <a href="https://github.com/MCEVAL/McEval"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -146,12 +146,23 @@
                 </span>
                 <!-- Dataset Link. -->
                 <span class="link-block">
-                  <a href="https://huggingface.co/MCEVAL/"
+                  <a href="https://huggingface.co/datasets/Multilingual-Multimodal-NLP/McEval"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="far fa-images"></i>
                     </span>
-                    <span>Data</span>
+                    <span>Evaluation Data</span>
+                  </a>
+                </span>
+
+                <!-- Dataset Link. -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/Multilingual-Multimodal-NLP/McEval-Instruct"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="far fa-images"></i>
+                    </span>
+                    <span>McEval-Instruct</span>
                   </a>
                 </span>
                 <!-- Leaderboard Link. -->
@@ -547,7 +558,7 @@ resulting in superior multilingual performance.
         </div>
       </div>
 </section>
-<section class="section">
+<!-- <section class="section">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
@@ -565,7 +576,7 @@ across various languages.For most languages,the codeLLM can answer the majority 
           </div>
         </div>
       </div>
-</section>
+</section> -->
 <section class="section">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
@@ -579,7 +590,7 @@ across various languages.For most languages,the codeLLM can answer the majority 
             <p>
               The data mainly consists of an instruction part
               (including function name, function description,and function callcases),a reference solution,and
-              a test cases part.Left.Shows an example of the Lisp language.Middle.Shows a file processing
+              a test cases part. Left. Shows an example of the Lisp language.Middle.Shows a file processing
               programming task in AWK language.During the evaluation,the corresponding file processing result
               by the generated code will be compared with the reference answer.Right.Shows an example of the R language.
             </p>
@@ -626,7 +637,7 @@ across various languages.For most languages,the codeLLM can answer the majority 
         </div>
       </div>
 </section>
-<section class="section">
+<!-- <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -648,7 +659,7 @@ across various languages.For most languages,the codeLLM can answer the majority 
         </div>
       </div>
     </div>
-</section>
+</section> -->
 <section class="section">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
@@ -661,9 +672,8 @@ across various languages.For most languages,the codeLLM can answer the majority 
                 height="80%" />
             </div>
             <p>
-              As shown in Figure14,we analyzed the programming languages in the MCEVAL from there presentation perspective.
-We used CodeBERT(Fengetal.,2020) to extract code representations from codesnippets in MCEVAL.
-These representations were visualized using t-SNE(Van der Maaten and Hinton,2008)and hierarchical clustering(Murtagh and Contreras,2012)methods.
+              As shown in Figure, we analyzed the programming languages in the MCEVAL from there presentation perspective.
+We used CodeBERT to extract code representations from codesnippets in MCEVAL.
 The figure clearly shows that languages with similar syntax have closely related representations. For example,other functional programming languages similar to CommonLisp,as well as C,C++,Java,and scripting
 languages,exhibit high grammar similarity.
             </p>
@@ -701,7 +711,7 @@ languages,exhibit high grammar similarity.
             </p>
             <p>
               The source code from this website is borrowed from <a
-                href="https://github.com/LiveCodeBench/livecodebench.github.io">this benchmark</a>!
+                href="https://github.com/LiveCodeBench/livecodebench.github.io">LiveCodeBench</a>!
             </p>
           </div>
         </div>

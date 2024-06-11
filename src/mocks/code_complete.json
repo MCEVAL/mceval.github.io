@@ -395,50 +395,6 @@
             "TS": 0.54,
             "VB": 0.56,
             "VimL": 0.18
-        },
-        {
-            "model": "codeqwen-7b-chat-complete-v3.jsonl",
-            "AVG": 0.35200000000000004,
-            "AWK": 0.4,
-            "C": 0.48,
-            "C++": 0.5,
-            "C#": 0.48,
-            "Clisp": 0.54,
-            "Coffee": 0.74,
-            "Dart": 0.255,
-            "Elisp": 0.26,
-            "Elixir": 0.22,
-            "Erlang": 0.36,
-            "Fortran": 0.02,
-            "F#": 0.42,
-            "Go": 0.02,
-            "Groovy": 0.16,
-            "Haskell": 0.46,
-            "Html": 0.3,
-            "Java": 0.28300000000000003,
-            "JS": 0.46,
-            "Json": 0.64,
-            "Julia": 0.54,
-            "Kotlin": 0.38,
-            "Lua": 0.34,
-            "MD": 0.2,
-            "Pascal": 0.22,
-            "Perl": 0.3,
-            "PHP": 0.36,
-            "Power": 0.4,
-            "Python": 0.46,
-            "R": 0.34,
-            "Racket": 0.22,
-            "Ruby": 0.44,
-            "Rust": 0.377,
-            "Scala": 0.02,
-            "Scheme": 0.3,
-            "Shell": 0.4,
-            "Swift": 0.66,
-            "Tcl": 0.14,
-            "TS": 0.44,
-            "VB": 0.08,
-            "VimL": 0.48
         }
     ],
     "models": [
@@ -468,9 +424,6 @@
         },
         {
             "model_name": "codeqwen-7b-chat"
-        },
-        {
-            "model_name": "codeqwen-7b-chat-complete-v3.jsonl"
         }
     ],
     "date_marks": [
