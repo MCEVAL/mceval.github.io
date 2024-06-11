@@ -58,7 +58,6 @@ const LeaderboardTabs = () => {
   );
 };
 
-
 ReactDOM.render(
   <React.StrictMode>
     <section className="hero">
@@ -120,7 +119,6 @@ ReactDOM.render(
                 <LeaderboardTabs />
               </div>
 
-
               <section className="section">
                 <div className="container is-max-desktop">
                   <div className="columns is-centered has-text-centered">
@@ -138,8 +136,6 @@ ReactDOM.render(
                   </div>
                 </div>
               </section>
-
-
 
             </div>
           </div>
