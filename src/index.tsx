@@ -79,7 +79,7 @@ ReactDOM.render(
               <div className="column has-text-centered">
                 <div className="publication-links">
                   <span className="link-block">
-                    <a href=""
+                    <a href="https://arxiv.org/abs/2406.07436"
                       className="external-link button is-normal is-rounded is-dark">
                       <span className="icon">
                         <i className="fas fa-file-pdf"></i>
